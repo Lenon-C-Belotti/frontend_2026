@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<title> Quiz e Avaliação - VPN </title>
+<style>
+	{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
+body {
+	font-family: 'Segoe UI', Arial, sans-serif;
+	   background: linear-gradient(135deg, #323585, #6a6df0);
+	color: #f0f0f0;
+	line-height:1.6;
+	padding: 20px;
+}
+
+h1, h2 {
+	text-align: center;
+	margin-buttom: 20px;
+	color: #00d9ff;
+	text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.container {
+	max-width: 800px;
+	margin: auto;
+	background: rgba(255,255,255,0.05);
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+a {
+	color: #00d9ff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #ff4081;
+	text-decoration: underline;
+}
+
+ul {
+	magin: 15px 0;
+	padding-left: 20px;
+}
+	
+li {
+	magin-bottom: 8px;
+}
+
+table {
+	width: 100%;
+	border: 1px solid #00d9ff;
+	padding: 12px;
+	text-align: left;
+}
+
+th, td {
+	border: 1px solid #00d9ff;
+	padding: 12px;
+	text-align: left;
+}
+
+th {
+	background: rgba(0,217,255,0.2);
+	color: #00d9ff;
+}
+
+td {
+	background: rgba(255,255,255,0.05);
+}
+
+form {
+	margin-top: 30px;
+	background: rgba(0,0,0,0.4);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+label {
+	display: block;
+	margin-top: 15px;
+	font-weight: bold;
+	color: #00d9ff;
+}
+input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+}
+
+input:focus, textarea:focus, select:focus {
+      outline: 2px solid #00d9ff;
+      background: rgba(255,255,255,0.2);
+}
+
+button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #323585;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+}
+</style>
+</head>
+<body>
+	<div class="container">
+	 <h1> Quiz: Oque você aprendeu? </h1>
+	 <p> Responda as questões abaixo para testar seus conhecimentos sobre VPN </p>
+	<form>
+	 <h2> Questão 1 </h2>
+	 <p> O que significa a sigla VPN? </p>
+	<label> <input type="radio" name="q1"> Virtual Private Network</label>
+	<label> <input type="radio" name="q1"> Very Personal Network</label>
+	<label> <input type="radio" name="q1"> Variable Protocol Node</label>
+	 <h2> Questão 2 </h2>
+	 <p> Qual é a principal função de uma VPN? </p>
+	<label> <input type="radio" name="q2"> Aumentar a velocidade da interface </label>
+	<label> <input type="radio" name="q2"> Garantir segurança em redes públicas </label>
+	<label> <input type="radio" name="q2"> Melhorar a qualidade de vídeos </label>
+	 <h3> Questão 3 </h3>
+	 <p> Uma VPN pode ser usada para: </p>
+	<label> <input type="radio" name="q3"> Acessar conteúdos restritos por região</label>
+	<label> <input type="radio" name="q3"> Garantir segurança em redes públicas</label>
+	<label> <input type="radio" name="q3"> Melhorar a qualidade de vídeo</label>
+
+	<button type="submit"> Enviar Respostas</button>
+	</form>
+	<h1> Avaliação do Material </h1>
+	<form>
+	 <label for="nome"> Nome: </label>
+	 <input type="text" id="nome" name="nome">
+
+	 <label for="email"> Email: </label>
+	 <input type="email" id="email" name="email">
+	 
+	 <label for="avaliacao"> Como você avalia este material?</label>
+	 <select id="avaliacao" name="avaliacao">
+	  <option value="excelente">Excelente</option>
+ 	  <option value="bom">Bom</bom>
+	  <option value="regular">Regular</regular>
+	  <option value="ruim">Ruim</regular>
+	 </select>
+
+	 <label for="comentearios">Comentários: </label>
+	 <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+
+	 <button type="submit">Enviar Avaliação</button>
+   	</form>
+	</div>
+	</body>
+	</html>	
+</body>

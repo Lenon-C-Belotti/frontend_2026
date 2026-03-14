@@ -1,5 +1,5 @@
 ## 🚀 Projeto Online  
-🔗 Acesse o projeto:  
+🔗 Acesse as atividades:  
 [![Ver Atividades](https://img.shields.io/badge/🔗-Ver%20Projeto-blue?style=for-the-badge)](https://lenon-c-belotti.github.io/frontend_2026/)
 
 ---

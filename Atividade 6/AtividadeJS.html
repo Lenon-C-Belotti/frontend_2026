@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meu Pet Virtual</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                font-family: 'Arial', sans-serif;
+            }
+
+            .container {
+                text-align: center;
+                background: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                max-width: 500px;
+                transition: all 0.4s ease;
+                position: relative;
+            }
+
+            .container.dark-theme {
+                background: #2d2d2d;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            }
+
+            .theme-toggle {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                border: none;
+                background: #f0f0f0;
+                cursor: pointer;
+                font-size: 20px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            .theme-toggle:hover {
+                transform: scale(1.1);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .container.dark-theme .theme-toggle {
+                background: #444;
+            }
+
+            h1 {
+                color: #333;
+                margin-bottom: 20px;
+                font-size: 28px;
+                transition: color 0.3s ease;
+            }
+
+            .container.dark-theme h1 {
+                color: #f0f0f0;
+            }
+
+            .name-section {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 30px;
+                align-items: center;
+            }
+
+            #petInput {
+                flex: 1;
+                padding: 12px 20px;
+                font-size: 16px;
+                border: 2px solid #667eea;
+                border-radius: 25px;
+                outline: none;
+                transition: all 0.3s ease;
+                background-color: white;
+                color: #333;
+            }
+
+            #petInput:focus {
+                border-color: #764ba2;
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            }
+
+            .container.dark-theme #petInput {
+                background-color: #3d3d3d;
+                color: #f0f0f0;
+                border-color: #bb86fc;
+            }
+
+            .container.dark-theme #petInput:focus {
+                border-color: #bb86fc;
+                box-shadow: 0 0 10px rgba(187, 134, 252, 0.3);
+            }
+
+            #btnSetName {
+                padding: 12px 25px;
+                font-size: 14px;
+                font-weight: bold;
+                color: white;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            #btnSetName:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+            }
+
+            .pet-name {
+                color: #764ba2;
+                font-size: 18px;
+                margin-bottom: 20px;
+                font-weight: bold;
+                min-height: 25px;
+                transition: color 0.3s ease;
+            }
+
+            .container.dark-theme .pet-name {
+                color: #bb86fc;
+            }
+
+            #b {
+                width: 200px;
+                height: 200px;
+                object-fit: contain;
+                margin-bottom: 30px;
+                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+                transition: transform 0.3s ease;
+            }
+
+            #b:hover {
+                transform: scale(1.1);
+            }
+
+            #btn {
+                padding: 12px 40px;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            #btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+            }
+
+            #btn:active {
+                transform: translateY(0);
+            }
+
+            .status {
+                margin-top: 20px;
+                font-size: 14px;
+                color: #666;
+                transition: color 0.3s ease;
+            }
+
+            .container.dark-theme .status {
+                color: #b0b0b0;
+            }
+
+            .background-section {
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 2px solid #e0e0e0;
+                transition: border-color 0.3s ease;
+            }
+
+            .container.dark-theme .background-section {
+                border-top-color: #444;
+            }
+
+            .background-section label {
+                display: block;
+                font-size: 14px;
+                color: #666;
+                font-weight: bold;
+                margin-bottom: 10px;
+                transition: color 0.3s ease;
+            }
+
+            .container.dark-theme .background-section label {
+                color: #b0b0b0;
+            }
+
+            #backgroundSelect {
+                width: 100%;
+                padding: 12px 15px;
+                font-size: 14px;
+                border: 2px solid #667eea;
+                border-radius: 25px;
+                background-color: white;
+                color: #333;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .container.dark-theme #backgroundSelect {
+                background-color: #3d3d3d;
+                color: #f0f0f0;
+                border-color: #bb86fc;
+            }
+
+            #backgroundSelect:hover {
+                border-color: #764ba2;
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            }
+
+            #backgroundSelect:focus {
+                outline: none;
+                border-color: #764ba2;
+                box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <button class="theme-toggle" id="themeToggle" title="Alternar tema">🌙</button>
+            <h1>🐾 Meu Pet Virtual 🐾</h1>
+            
+            <div class="name-section">
+                <input 
+                    type="text" 
+                    id="petInput" 
+                    placeholder="Digite o nome do seu pet..." 
+                    maxlength="20"
+                />
+                <button id="btnSetName">✅</button>
+            </div>
+
+            <div class="pet-name" id="petName">Esperando nome...</div>
+
+            <img id="b" src="c_n.png" alt="Pet Virtual"/>
+            <br>
+            <button id="btn">🍖 Alimentar</button>
+            <div class="status" id="status"></div>
+
+            <div class="background-section">
+                <label for="backgroundSelect">🎨 Escolha o fundo:</label>
+                <select id="backgroundSelect">
+                    <option value="gradient1">Gradiente Roxo/Rosa</option>
+                    <option value="gradient2">Gradiente Azul/Ciano</option>
+                    <option value="gradient3">Gradiente Verde/Esmeralda</option>
+                    <option value="gradient4">Gradiente Laranja/Vermelho</option>
+                    <option value="color1">Azul Claro</option>
+                    <option value="color2">Verde Claro</option>
+                    <option value="color3">Rosa Claro</option>
+                    <option value="color4">Amarelo Claro</option>
+                </select>
+            </div>
+        </div>
+
+        <script src="PartJS.js"></script>
+    </body>
+</html>

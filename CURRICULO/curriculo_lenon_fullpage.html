@@ -1,0 +1,489 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;700;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body, html { background: #060912; }
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  background: #060912;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  font-family: 'Syne', sans-serif;
+}
+
+/* FUNDO COMPLETO */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow-1 {
+  position: fixed;
+  top: -120px; right: -120px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #7b2ff72a 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow-2 {
+  position: fixed;
+  bottom: -100px; left: -100px;
+  width: 450px; height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00d4ff1a 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow-3 {
+  position: fixed;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #7b2ff710 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ESTRELAS */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.35;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.15; }
+  to { opacity: 0.6; }
+}
+
+/* LINHAS LATERAIS DECORATIVAS */
+.side-line-left {
+  position: fixed;
+  left: 20px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #00d4ff33 30%, #7b2ff733 70%, transparent);
+  z-index: 1;
+}
+
+.side-line-right {
+  position: fixed;
+  right: 20px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #7b2ff733 30%, #00d4ff33 70%, transparent);
+  z-index: 1;
+}
+
+.side-label-left {
+  position: fixed;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: #00d4ff;
+  opacity: 0.3;
+  letter-spacing: 0.18em;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.side-label-right {
+  position: fixed;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: #7b2ff7;
+  opacity: 0.3;
+  letter-spacing: 0.18em;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* CV CONTAINER */
+.cv {
+  position: relative;
+  z-index: 2;
+  background: #0a0e1a;
+  color: #b8c8e8;
+  padding: 28px 24px;
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  border: 1px solid #1a2340;
+}
+
+.cv-inner-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.glow-tr {
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #7b2ff722 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #7b2ff7;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #1a2340;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.avatar-wrap {
+  padding: 2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+  flex-shrink: 0;
+}
+
+.avatar-wrap img {
+  display: block;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 3px solid #0a0e1a;
+}
+
+.header-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #e8f0ff;
+  margin-bottom: 3px;
+}
+
+.header-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #00d4ff;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+.social-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #111827;
+  border: 1px solid #1e2a45;
+  color: #8bb8ff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.social-btn img { width: 14px; height: 14px; border-radius: 2px; object-fit: contain; }
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, #00d4ff33, #7b2ff733, transparent);
+  margin: 18px 0;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.card {
+  background: #0f1628;
+  border: 1px solid #1a2340;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.card p { font-size: 13px; line-height: 1.8; color: #8899bb; }
+.card p strong { color: #c8d8f0; font-weight: 600; }
+
+.chip-list { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.chip {
+  background: #111827;
+  border: 1px solid #1e2a45;
+  color: #8bb8ff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 11px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot.cyan { background: #00d4ff; }
+.dot.purple { background: #7b2ff7; }
+.dot.green { background: #00ff88; }
+
+.sobre-card {
+  background: #0f1628;
+  border: 1px solid #1a2340;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.sobre-card p { font-size: 13.5px; line-height: 1.85; color: #8899bb; }
+
+.exp-card {
+  background: #0f1628;
+  border: 1px solid #1a2340;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.exp-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #141e33;
+}
+
+.exp-item:last-child { border-bottom: none; }
+
+.exp-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #00d4ff;
+  opacity: 0.6;
+  min-width: 22px;
+}
+
+.exp-text { font-size: 13px; color: #a0b4d0; }
+
+.exp-badge {
+  margin-left: auto;
+  background: #111827;
+  border: 1px solid #1e2a45;
+  color: #7b2ff7;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.exp-badge.green { color: #00ff88; border-color: #00ff8822; }
+
+
+.card,
+.sobre-card,
+.exp-card {
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  will-change: transform;
+}
+
+
+.card:hover,
+.sobre-card:hover,
+.exp-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 
+    0 10px 30px rgba(0, 212, 255, 0.12),
+    0 0 20px rgba(123, 47, 247, 0.15);
+  border-color: #2a3a70;
+}
+.card::after,
+.sobre-card::after,
+.exp-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent, rgba(0,212,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.card:hover::after,
+.sobre-card:hover::after,
+.exp-card:hover::after {
+  opacity: 1;
+}
+
+
+
+</style>
+
+<div class="page">
+  <div class="bg-grid"></div>
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-glow-3"></div>
+  <div class="stars" id="stars"></div>
+  <div class="side-line-left"></div>
+  <div class="side-line-right"></div>
+  <div class="side-label-left">LENON · CAZATTI · BELOTTI · DEV</div>
+  <div class="side-label-right">ENGENHARIA DE SOFTWARE · 2025</div>
+
+  <div class="cv">
+    <div class="cv-inner-glow"></div>
+    <div class="glow-tr"></div>
+
+    <div class="header">
+      <div class="avatar-wrap">
+        <img src="https://avatars.githubusercontent.com/u/208121307?v=4" alt="Lênon">
+      </div>
+      <div style="flex:1;">
+        <div class="header-name">Lênon Cazatti Belotti</div>
+        <div class="header-sub">Estudante de Engenharia de Software · Unicesumar, Maringá</div>
+        <div class="social-links">
+          <a class="social-btn" href="https://github.com/Lenon-C-Belotti" target="_blank">
+            <img src="https://logospng.org/download/github/github-2048.png"> GitHub
+          </a>
+          <a class="social-btn" href="https://www.linkedin.com/in/lenonbelotti/" target="_blank">
+            <img src="https://logospng.org/download/linkedin/logo-linkedin-icon-2048.png"> LinkedIn
+          </a>
+          <a class="social-btn" href="https://www.instagram.com/lenoncazattibelotti/" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/016/716/469/non_2x/instagram-icon-free-png.png"> Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-label">// sobre mim</div>
+    <div class="sobre-card">
+      <p>Me chamo Lênon Cazatti Belotti, estou cursando Engenharia de Software na Unicesumar, em Maringá. Desde que comecei a estudar profundamente nesta área, percebi o quanto fiquei entusiasmado para aprender e evoluir. Busco aplicar esses conhecimentos em projetos práticos contribuindo do melhor jeito possível, enquanto continuo meu crescimento profissional.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="sec-label">// informações</div>
+        <p>
+          <strong>Cidade:</strong> Maringá, PR<br>
+          <strong>Telefone:</strong> +55 (44) 99832-6838<br>
+          <strong>Email:</strong> cazattibelottilenon@gmail.com
+        </p>
+      </div>
+      <div class="card">
+        <div class="sec-label">// soft skills</div>
+        <div class="chip-list">
+          <div class="chip"><div class="dot cyan"></div>Trabalho em equipe</div>
+          <div class="chip"><div class="dot purple"></div>Resolução de problemas</div>
+          <div class="chip"><div class="dot green"></div>Fácil aprendizagem</div>
+          <div class="chip"><div class="dot cyan"></div>Adaptação</div>
+          <div class="chip"><div class="dot purple"></div>Flexibilidade</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-label">// stack técnica</div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="chip-list">
+        <div class="chip"><div class="dot cyan"></div>C</div>
+        <div class="chip"><div class="dot cyan"></div>C++</div>
+        <div class="chip"><div class="dot purple"></div>HTML</div>
+        <div class="chip"><div class="dot purple"></div>CSS</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec-label">// experiências &amp; eventos</div>
+    <div class="exp-card">
+      <div class="exp-item">
+        <span class="exp-num">01</span>
+        <span class="exp-text">NASA Space Apps Challenge 2025 — UniCesumar</span>
+        <span class="exp-badge green">2025</span>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">02</span>
+        <span class="exp-text">Hackathon Elotech 2025</span>
+        <span class="exp-badge green">2025</span>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">03</span>
+        <span class="exp-text">WorkingTech 2025.2 — LGPD</span>
+        <span class="exp-badge">evento</span>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">04</span>
+        <span class="exp-text">Nivelamento de Matemática 2025.1 — AAC</span>
+        <span class="exp-badge">curso</span>
+      </div>
+      <div class="exp-item">
+        <span class="exp-num">05</span>
+        <span class="exp-text">Nivelamento de Matemática 2025.2 — AAC</span>
+        <span class="exp-badge">curso</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2 + 1;
+  s.style.cssText = `
+    width:${size}px; height:${size}px;
+    top:${Math.random()*100}%;
+    left:${Math.random()*100}%;
+    animation-delay:${Math.random()*4}s;
+    animation-duration:${2+Math.random()*3}s;
+  `;
+  starsEl.appendChild(s);
+}
+</script>
